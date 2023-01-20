@@ -16,7 +16,7 @@ namespace NationalParks.Models
 
     [Required]
     [StringLength(20)]
-    public string State { get; set; }
+    public string StateName { get; set; }
 
     [Required]
     [Range(0, 200, ErrorMessage = "Rating must be between 0 and 5.")]
