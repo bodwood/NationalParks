@@ -6,5 +6,6 @@ namespace NationalParks.Models
     public string ParkName { get; set; }
     public string Region { get; set; }
     public string State { get; set; }
+    public int Rating { get; set; }
   }
 }
