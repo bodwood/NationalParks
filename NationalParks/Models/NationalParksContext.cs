@@ -4,7 +4,7 @@ namespace NationalParks.Models
 {
   public DbSet<Park> Parks { get; set; }
 
-  public NationalParksContext(DbContextOptions<NationalParksContext> options : base(options))
+  public NationalParksContext(DbContextOptions<NationalParksContext> options) : base(options)
   {
   }
 
