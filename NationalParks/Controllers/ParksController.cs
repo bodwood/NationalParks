@@ -70,7 +70,7 @@ namespace NationalParks.Controllers
     {
       _db.Parks.Add(park);
       await _db.SaveChangesAsync();
-      return CreatedAtAction(nameof(GetPark), new { id = park.ParkId}, park);
+      return CreatedAtAction(nameof(GetPark), new { id = park.ParkId }, park);
     }
 
     [HttpPut("{id}")]
@@ -104,6 +104,20 @@ namespace NationalParks.Controllers
     {
       return _db.Parks.Any(entry => entry.ParkId == id);
     }
-    
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePark(int id)
+    {
+      Park thisPark = await _db.Parks.FindAsync(id);
+      if (thisPark == null)
+      {
+        return NotFound();
+      }
+      _db.Parks.Remove(thisPark);
+      await _db.SaveChangesAsync();
+      return NoContent();
+
+    }
+
   }
 }
