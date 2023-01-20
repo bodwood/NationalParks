@@ -18,7 +18,7 @@ namespace NationalParks.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get(string parkName, string region, string stateName, int rating, bool sortRating, bool random)
     {
-      IQueryable<Park> query = _db.Parks.AsQuerable();
+      IQueryable<Park> query = _db.Parks.AsQueryable();
 
       if (parkName != null)
       {
@@ -43,7 +43,7 @@ namespace NationalParks.Controllers
       if (random == true)
       {
         int count = 0;
-        foreach (Park i in _db.Rating)
+        foreach (Park i in _db.Parks)
         {
           count++;
         }
@@ -52,6 +52,17 @@ namespace NationalParks.Controllers
         query = query.Where(entry => entry.ParkId == randId);
       }
       return await query.ToListAsync();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Park>> GetPark(int id)
+    {
+      Park park = await _db.Parks.FindAsync(id);
+      if (park == null)
+      {
+        return NotFound();
+      }
+      return park;
     }
   }
 }
