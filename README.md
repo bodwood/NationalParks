@@ -14,7 +14,7 @@
 - Swagger
 
 ## Description
-
+This is an API that includes various National Parks and their attributes. National Parks can searched, deleted, and edited. Users can also register as a user with a username and password, and login with the matching user criteria. Registering as a user and logging in is not a requirement to use this API. 
 
 
 ## Setup/Installation Requirements
@@ -60,13 +60,14 @@
 * Run project:
   - ```dotnet run --project NationalParks/```
 
-- Navigate to [http://localhost:5001](https://localhost:5001) to try application
+- Navigate to [https://localhost:5001](https://localhost:5001) to try application
 
-## Api Documentation
-### __Endpoints__
-<hr>
+<br>
 
-# For User and Registration
+# Api Documentation
+## __Endpoints__
+
+## Registration and Login
 ```
  POST https://localhost:5001/api/Auth/register
  POST https://localhost:5001/api/Auth/login
@@ -76,8 +77,10 @@
 
 Parameter   | Type  | Required | Description | 
 |:---------|:---------:|:---------:|:---------|
-username | string | Not Required | Sets and stores username for user
-password | string | Not Required | Sets and creates hashed password for user
+username | string | Required | Sets and stores username for user
+password | string | Required | Sets and creates hashed password for user
+
+<br>
 
 #### __POST Requests for registration are in JSON format and require username and password.__
 Example:
@@ -89,7 +92,8 @@ Example:
         "password" : "pass1234"
     }
 ```
-<hr>
+
+<br>
 
 ## For POST https://localhost:5001/api/Auth/login
 
@@ -97,6 +101,7 @@ Parameter   | Type  | Required | Description |
 |:---------|:---------:|:---------:|:---------|
 username | string | Required | Retrieves username if one exists and returns error if not
 password | string | Required | Retrieves password if one exists and returns error if not
+<br>
 
 #### __POST Requests for login are in JSON format and require username and password.__
 Example:
@@ -108,22 +113,30 @@ Example:
         "password" : "pass1234"
     }
 ```
-<hr>
+<br>
 
-# For Parks API
+#### _Note_
+It is not required to be registered or logged in to use API
+
+<br>
+<br>
+
+
+# Parks
 ```
  GET https://localhost:5001/Parks
  GET https://localhost:5001/Parks/{id}
  POST https://localhost:5001/Parks
  PUT https://localhost:5001/Parks/{id}
  DELETE https://localhost:5001/Parks/{id}
- ```
+```
 
- _Note_ 
+#### _Note_ 
 * The {id} value in the URL is a **variable** and should be replaced with the id of the park when using PUT or DELETE
 * ```GET http://localhost:5000/Parks``` Returns all parks
 * ```GET http://localhost:5000/Parks/{id}``` Returns individual park (depending on id)
 
+<br>
 
 ## __Queries__
 
@@ -138,8 +151,11 @@ Rating | int | Not Required | Returns parks with matching Rating value
 SortRating | bool | Not Required | Sorts parks based on rating, in descending order
 Random | bool | Not Required | Returns a random park
 
+<br>
+
+
 #### __Example Queries__
-To return list of all National Parks:
+Query to return list of all National Parks:
 
 ```GET https://localhost:5001/Parks/```
 
@@ -163,8 +179,12 @@ Multiple query strings can be executed as well, by separating them with an &:
 
 ```GET https://localhost:5001/Parks?region=Mountain&rating=4```
 
+
+<br>
+<br>
+
 ### __Endpoints that require body input__
-#### __POST Requests are in JSON format and require parkName, region, stateName, and rating.__
+##### __POST Requests are in JSON format and require parkName, region, stateName, and rating.__
 Example:
 
 ```POST https://localhost:5001/Parks```
@@ -176,6 +196,7 @@ Example:
         "rating" : 4
     }
 ```
+<br>
 
 #### __PUT Requests require a body in JSON format that includes all fields.__
 Example:
@@ -190,10 +211,13 @@ Example:
         "rating" : 4
     }
 ```
+<br>
 
 ## Known Bugs
 
 * _No known bugs_
+
+<br>
 
 ## License
 
@@ -206,9 +230,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-**new commands**
-```dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.6```
-```dotnet add package Microsoft.IdentityModel.Tokens --version 6.26.0```
-```dotnet add package System.IdentityModel.Tokens.Jwt --version 6.26.0```
