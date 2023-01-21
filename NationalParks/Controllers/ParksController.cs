@@ -4,7 +4,7 @@ using NationalParks.Models;
 
 namespace NationalParks.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("[controller]")]
   [ApiController]
   public class ParksController : ControllerBase
   {
@@ -118,6 +118,5 @@ namespace NationalParks.Controllers
       return NoContent();
 
     }
-
   }
 }
