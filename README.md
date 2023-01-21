@@ -67,7 +67,7 @@ This is an API that includes various National Parks and their attributes. Nation
 # Api Documentation
 ## __Endpoints__
 
-## Registration and Login
+Registration and Login
 ```
  POST https://localhost:5001/api/Auth/register
  POST https://localhost:5001/api/Auth/login
@@ -215,7 +215,10 @@ Example:
 
 ## Known Bugs
 
-* _No known bugs_
+* Unable to require authentication for editing and adding to the API. please email me at [bodiewould@gmail.com](mailto:bodiewould@gmail.com) with the subject **[_Repo Name_] Bug** and include:
+  * BUG: _A brief description of the bug_
+  * FIX: _Suggestion for solution (if you have one!)_
+  * If you'd like to be credited, please also include your **_github user profile link_**
 
 <br>
 
